@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #data-display {
+            margin-top: 20px;
+        }
+        .user-card {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fetch API Data Example</h1>
+        <button onclick="fetchData()">Get Users</button>
+        <div id="data-display"></div>
+    </div>
+
+    <script>
+        function fetchData() {
+            document.getElementById('data-display').innerHTML = '<p>Loading...</p>';
+            fetch('https://jsonplaceholder.typicode.com/users')
+                .then(response => response.json())
+                .then(data => {
+                    displayData(data);
+                })
+                .catch(error => {
+                    document.getElementById('data-display').innerHTML = '<p>Error loading data!</p>';
+                    console.error('Error:', error);
+                });
+        }
+
+        function displayData(users) {
+            let html = '<h2>Users List</h2>';
+            for (let user of users) {
+                html += `
+                    <div class="user-card">
+                        <h3>${user.name}</h3>
+                        <p><strong>Email:</strong> ${user.email}</p>
+                        <p><strong>Phone:</strong> ${user.phone}</p>
+                        <p><strong>City:</strong> ${user.address.city}</p>
+                    </div>
+                `;
+            }
+            document.getElementById('data-display').innerHTML = html;
+        }
+    </script>
+</body>
+</html>
