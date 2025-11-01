@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Palindrome Checker</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 50px;">
+  <h2>Palindrome Checker</h2>
+  <div id="output"></div>
+
+  <script>
+    function isPalindrome(str) {
+      const cleaned = str.toLowerCase().replace(/[\W_]/g, '');
+      const reversed = cleaned.split('').reverse().join('');
+      return cleaned === reversed;
+    }
+
+    const testStrings = [
+      "dad",
+      "hello",
+      "mom",
+      "madam"
+    ];
+
+    const output = document.getElementById("output");
+
+    testStrings.forEach(str => {
+      const result = document.createElement("p");
+      if (isPalindrome(str)) {
+        result.textContent = `"${str}" is a Palindrome `;
+        result.style.color = "green";
+      } else {
+        result.textContent = `"${str}" is Not a Palindrome `;
+        result.style.color = "red";
+      }
+      output.appendChild(result);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fibonacci Sequence</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 50px;">
+  <h2>Fibonacci Sequence Generator</h2>
+  <div id="output"></div>
+
+  <script>
+    function generateFibonacci(n) {
+      const fib = [0, 1];
+      for (let i = 2; i < n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+      }
+      return fib.slice(0, n);
+    }
+
+    const n = 10;
+    const sequence = generateFibonacci(n);
+
+    const output = document.getElementById("output");
+
+    const heading = document.createElement("p");
+    heading.textContent = `Fibonacci sequence of ${n} terms:`;
+    output.appendChild(heading);
+
+    const result = document.createElement("p");
+    result.textContent = sequence.join(", ");
+    output.appendChild(result);
+  </script>
+</body>
+</html>

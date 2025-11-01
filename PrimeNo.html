@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prime Number Checker</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 50px;">
+  <h2>Prime Number Checker</h2>
+  <div id="output"></div>
+
+  <script>
+    function prime(n) {
+      if (n <= 1) return false;
+      if (n === 2) return true;
+      if (n % 2 === 0) return false;
+
+      for (let i = 3; i <= Math.sqrt(n); i += 2) {
+        if (n % i === 0) return false;
+      }
+      return true;
+    }
+
+    const numbers = [2, 7, 10, 17, 23, 29, 37];
+    const output = document.getElementById("output");
+
+    numbers.forEach(n => {
+      const result = document.createElement("p");
+      if (prime(n)) {
+        result.textContent = `${n} is Prime `;
+        result.style.color = "green";
+      } else {
+        result.textContent = `${n} is Not Prime `;
+        result.style.color = "red";
+      }
+      output.appendChild(result);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Remove Duplicates from Array</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 50px;">
+  <h2>Remove Duplicates Example</h2>
+  <div id="output"></div>
+
+  <script>
+    function removeDuplicates(arr) {
+      return [...new Set(arr)];
+    }
+
+    const arr1 = [1, 2, 3, 2, 4, 5, 1, 6, 5];
+    const uniqueArray = removeDuplicates(arr1);
+
+    const output = document.getElementById("output");
+
+    const originalPara = document.createElement("p");
+    originalPara.textContent = "Original Array: " + JSON.stringify(arr1);
+    output.appendChild(originalPara);
+
+    const uniquePara = document.createElement("p");
+    uniquePara.textContent = "Array without Duplicates: " + JSON.stringify(uniqueArray);
+    output.appendChild(uniquePara);
+  </script>
+</body>
+</html>

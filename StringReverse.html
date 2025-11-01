@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reverse String Example</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 50px;">
+  <h2>Reverse String Example</h2>
+  <div id="output"></div>
+
+  <script>
+    function reverseString(str) {
+      return str.split('').reverse().join('');
+    }
+
+    const str1 = "Hello";
+    const rev = reverseString(str1);
+
+    const output = document.getElementById("output");
+
+    const originalPara = document.createElement("p");
+    originalPara.textContent = "Original String: " + str1;
+    output.appendChild(originalPara);
+
+    const reversedPara = document.createElement("p");
+    reversedPara.textContent = "Reversed String: " + rev;
+    output.appendChild(reversedPara);
+  </script>
+</body>
+</html>

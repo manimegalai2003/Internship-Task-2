@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flatten Nested Array</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 50px;">
+  <h2>Flatten Nested Array Example</h2>
+  <div id="output"></div>
+
+  <script>
+    function flattenArray(arr) {
+      let flat = [];
+      for (let item of arr) {
+        if (Array.isArray(item)) {
+          flat = flat.concat(flattenArray(item));
+        } else {
+          flat.push(item);
+        }
+      }
+      return flat;
+    }
+
+    const nestedArray = [1, [2, [3, 4], 5], 6, [7, 8]];
+    const flattened = flattenArray(nestedArray);
+
+    const output = document.getElementById("output");
+
+    const originalPara = document.createElement("p");
+    originalPara.textContent = "Original Nested Array: " + JSON.stringify(nestedArray);
+    output.appendChild(originalPara);
+
+    const flattenedPara = document.createElement("p");
+    flattenedPara.textContent = "Flattened Array: " + JSON.stringify(flattened);
+    output.appendChild(flattenedPara);
+  </script>
+</body>
+</html>

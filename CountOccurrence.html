@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Count Occurrences</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 50px;">
+  <h2>Count Occurrences of Elements in an Array</h2>
+  <p id="array"></p>
+  <p id="occurrences"></p>
+  <div id="details"></div>
+
+  <script>
+    function countOccurrences(arr) {
+      const counts = {};
+      for (let element of arr) {
+        counts[element] = counts[element] ? counts[element] + 1 : 1;
+      }
+      return counts;
+    }
+
+    const fruits = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+    const occurrences = countOccurrences(fruits);
+
+    // Display results on page
+    document.getElementById("array").textContent = "Array: " + fruits.join(", ");
+    document.getElementById("occurrences").textContent = "Occurrences: " + JSON.stringify(occurrences);
+
+    document.getElementById("details").innerHTML = detailsHTML;
+  </script>
+</body>
+</html>
